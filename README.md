@@ -20,7 +20,14 @@ The program also runs in CLI mode, allowing you to pass in a list of `Math.rando
 ./solver.exe <engine> <random_seed_1> <random_seed_2> <random_seed_3> ... <random_seed_n>
 ```
 
-Note: Use `./solver.exe --help` to see the list of supported engines and their corresponding names.
+### Example
+
+```bash
+./solver.exe safari 0.6471651905689174 0.756716341278459 0.19666910380048563 0.18917313673581693 0.9714560740112332
+```
+
+> [!NOTE]
+> Use `./solver.exe --help` to see the list of supported engines and their corresponding names.
 
 ## Prerequisites
 
