@@ -1,0 +1,12 @@
+[package]
+name = "math_random_predict"
+version = "0.1.0"
+edition = "2024"
+
+[[bin]]
+name = "solver"
+path = "src/main.rs"
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+z3 = { version = "0.20.2", features = ["vendored"] }
