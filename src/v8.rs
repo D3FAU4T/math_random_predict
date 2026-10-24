@@ -1,5 +1,4 @@
-use z3::ast::BV;
-use z3::Solver;
+use crate::solver::{BV, Solver, SatResult};
 
 pub enum V8Mode {
     Modern,
@@ -97,7 +96,7 @@ impl V8Predictor {
             }
         }
 
-        if solver.check() == z3::SatResult::Sat {
+        if solver.check() == SatResult::Sat {
             if let Some(model) = solver.get_model() {
                 self.conc_state_0 = model.eval(&curr_state_0, true).unwrap().as_u64().unwrap();
                 self.conc_state_1 = model.eval(&curr_state_1, true).unwrap().as_u64().unwrap();

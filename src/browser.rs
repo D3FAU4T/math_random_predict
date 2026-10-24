@@ -1,5 +1,4 @@
-use z3::ast::BV;
-use z3::Solver;
+use crate::solver::{BV, Solver, SatResult};
 
 pub struct BrowserPredictor {
     sequence: Vec<f64>,
@@ -60,7 +59,7 @@ impl BrowserPredictor {
             solver.assert(&constrained_val.eq(BV::from_u64(mantissa, 64)));
         }
 
-        if solver.check() == z3::SatResult::Sat {
+        if solver.check() == SatResult::Sat {
             if let Some(model) = solver.get_model() {
                 self.is_solved = true;
                 self.conc_state_0 = model.eval(&curr_state_0, true).unwrap().as_u64().unwrap();

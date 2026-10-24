@@ -1,5 +1,6 @@
 mod browser;
 mod safari;
+mod solver;
 mod v8;
 
 use clap::{Parser, ValueEnum};
@@ -225,5 +226,17 @@ mod tests {
         let mut predictor = V8Predictor::new(seq, V8Mode::Modern);
         assert!(predictor.solve());
         assert!((predictor.predict_next() - 0.10512728754914236).abs() < 1e-15);
+    }
+
+    #[test]
+    fn test_safari_prediction() {
+        let seq = vec![
+            0.6471651905689174, 0.756716341278459, 0.19666910380048563,
+            0.18917313673581693, 0.9714560740112332,
+        ];
+        let mut predictor = SafariPredictor::new(seq);
+        assert!(predictor.solve());
+        let pred = predictor.predict_next();
+        assert!(pred > 0.0 && pred < 1.0);
     }
 }

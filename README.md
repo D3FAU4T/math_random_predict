@@ -1,8 +1,8 @@
 # Math Random Predict
 
-A high-performance Rust tool built to predict the output of JavaScript's `Math.random()` function across any runtime environment (Node.js, Bun, Safari, Chrome, browser contexts, etc.). 
+A high-performance Rust tool built to predict the output of JavaScript's `Math.random()` function across any runtime environment (Node.js, Bun, Safari, Chrome, browser contexts, etc.).
 
-By utilizing the power of the Z3 Theorem Prover, this tool reconstructs the internal state of the PRNG engine used by the JavaScript runtime, allowing for accurate prediction of future generated values.
+By utilizing a high-performance, pure-Rust symbolic bit-vector solver and CDCL SAT engine, this tool reconstructs the internal state of the PRNG engine used by the JavaScript runtime, allowing for accurate prediction of future generated values.
 
 ## Usage
 
@@ -31,18 +31,26 @@ The program also runs in CLI mode, allowing you to pass in a list of `Math.rando
 
 ## Prerequisites
 
-To build this project from source, you will need:
+To build this project from source, you only need:
 
-- [Rust](https://www.rust-lang.org/tools/install)
-- CMake
-- A C++ toolchain (Visual Studio Build Tools 2022 is expected on Windows, as configured in `.cargo/config.toml`).
+- [Rust](https://www.rust-lang.org/tools/install) (2024 edition or newer)
+
+No CMake, C/C++ compiler, or external solver installations are needed. The project is 100% pure Rust and fully cross-platform.
 
 ## Building
 
-Build the project using Cargo. Note that the initial compilation will take a few minutes (around 5 minutes depending on hardware) because it compiles the entire Z3 C++ codebase from scratch to optimize execution speed.
+Build the project using Cargo:
 
 ```bash
 cargo build --release
+```
+
+## Running Tests
+
+Run the test suite using:
+
+```bash
+cargo test
 ```
 
 # License

@@ -9,4 +9,3 @@ path = "src/main.rs"
 
 [dependencies]
 clap = { version = "4", features = ["derive"] }
-z3 = { version = "0.20.2", features = ["vendored"] }
