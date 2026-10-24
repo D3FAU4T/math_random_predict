@@ -1,6 +1,6 @@
 [package]
 name = "math_random_predict"
-version = "0.1.0"
+version = "1.0.0"
 edition = "2024"
 
 [[bin]]
@@ -8,4 +8,11 @@ name = "solver"
 path = "src/main.rs"
 
 [dependencies]
-clap = { version = "4", features = ["derive"] }
+clap = { version = "4", default-features = false, features = ["derive", "std", "help", "usage"] }
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
